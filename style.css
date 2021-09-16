@@ -49,3 +49,19 @@ body {
     align-items: center;
     justify-content: space-between;
 }
+
+.top-bar i {
+    font-size: 30px;
+    color: var(--lightblack);
+}
+
+.top-bar span {
+    font-size: 20px;
+    color: var(--lightblack);
+}
+
+.img-area {
+    height: 256px;
+    width: 100%;
+    box-shadow: 1px 1px 10px var(--lightshadow);
+}
