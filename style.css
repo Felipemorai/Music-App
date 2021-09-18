@@ -44,7 +44,8 @@ body {
     cursor: pointer;
 }
 
-.top-bar {
+.top-bar, .progress-area .timer,
+.controls {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -126,13 +127,18 @@ body {
 }
 
 .progress-area .timer{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     margin-top: 2px;
 }
 
 .timer span {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--lightblack);
+}
+
+.controls {
+    margin: 40px 0 5px 0;
+}
+
+.controls i {
+    font-size: 28px;
 }
