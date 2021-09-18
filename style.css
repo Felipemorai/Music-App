@@ -114,5 +114,25 @@ body {
     background: #fbb1bd;
     border-radius: inherit;
     top: 50%;
+    right: -5px;
     transform: translateY(-50%);
+    background: inherit;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.progress-area:hover .progress-bar::before {
+    opacity: 1;
+}
+
+.progress-area .timer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2px;
+}
+
+.timer span {
+    font-size: 13px;
+    color: var(--lightblack);
 }
