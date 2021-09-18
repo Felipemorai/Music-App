@@ -38,6 +38,7 @@ body {
     padding: 25px 30px;
     background: var(--white);
     box-shadow: 1px 5px 10px var(--lightshadow);
+    user-select: none;
 }
 
 .wrapper i {
@@ -126,7 +127,7 @@ body {
     opacity: 1;
 }
 
-.progress-area .timer{
+.progress-area .timer {
     margin-top: 2px;
 }
 
@@ -141,4 +142,29 @@ body {
 
 .controls i {
     font-size: 28px;
+    user-select: none;
+    background-image: linear-gradient(90deg, #ff7096 0%, #fbb1bd 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.controls i:nth-child(2),
+.controls i:nth-child(4) {
+    font-size: 38px;
+}
+
+.controls #prev {
+    margin-right: -13px;
+}
+
+.controls #next {
+    margin-left: -13px;
+}
+
+.controls .play-pause {
+    height: 54px;
+    width: 54px;
+    background-image: linear-gradient(90deg, #ced4da 0%, #e9ecef 100%);
+    box-shadow: 0px 0px 5px #ff7096;
 }
