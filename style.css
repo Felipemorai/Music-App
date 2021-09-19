@@ -208,6 +208,14 @@ body {
     border-radius: 15px;
     background: var(--white);
     box-shadow: 0px -5px 10px var(--lightshadow);
+    transition: all 0.14s ease-out;
+}
+
+/* We'll use this show class in javascript */
+.music-list.show {
+    bottom: 0;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .music-list .header .row {
