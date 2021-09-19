@@ -33,6 +33,7 @@ body {
 }
 
 .wrapper {
+    position: relative;
     width: 380px;
     border-radius: 15px;
     padding: 25px 30px;
@@ -46,7 +47,7 @@ body {
 }
 
 .top-bar, .progress-area .timer,
-.controls {
+.controls, .music-list .header, .music-list li {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -193,4 +194,14 @@ body {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.music-list {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-radius: 15px;
+    background: var(--white);
+    box-shadow: 0px -5px 10px var(--lightshadow);
 }
