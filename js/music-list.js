@@ -28,5 +28,5 @@ let allMusic = [
         artist: "Labrinth",
         img: "Labrinth - We All Knew1.jpg",
         src: "Labrinth - We All Knew Official"
-    },
+    }
 ]
