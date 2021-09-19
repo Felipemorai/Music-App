@@ -35,6 +35,7 @@ body {
 .wrapper {
     position: relative;
     width: 380px;
+    overflow: hidden;
     border-radius: 15px;
     padding: 25px 30px;
     background: var(--white);
@@ -199,7 +200,9 @@ body {
 .music-list {
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: -55%;
+    opacity: 0;
+    pointer-events: none;
     width: 100%;
     padding: 15px 30px;
     border-radius: 15px;
@@ -230,6 +233,12 @@ body {
 
 .music-list ul {
     margin: 10px 0;
+    max-height: 268px;
+    overflow-y: auto;
+}
+
+.music-list ul::-webkit-scrollbar {
+    width: 0px;
 }
 
 .music-list ul li {
@@ -251,4 +260,8 @@ body {
 
 ul li .row p {
     opacity: 0.9;
+}
+
+ul li .audio-duration {
+    font-size: 16px;
 }
