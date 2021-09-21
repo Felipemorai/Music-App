@@ -4,7 +4,8 @@ const wrapper = document.querySelector(".wrapper"),
 musicImg = wrapper.querySelector(".img-area img"),
 musicName = wrapper.querySelector(".song-details .name"),
 musicArtist = wrapper.querySelector(".song-details .artist"),
-mainAudio = wrapper.querySelector("#main-audio");
+mainAudio = wrapper.querySelector("#main-audio"),
+playPauseBtn = wrapper.querySelector(".play-pause");
 
 let musicIndex = 1;
 
@@ -20,3 +21,10 @@ function loadMusic(indexNumb) {
     musicImg.src = `img/${allMusic[indexNumb - 1].img}`;
     mainAudio.src = `music/${allMusic[indexNumb - 1].src}`;
 }
+
+/* Play or music button event */
+playPauseBtn.addEventListener("click", () => {
+    const isMusicPaused = wrapper.classList.contains("paused");
+    /* If isMusicPaused is true them call pauseMusic else call playMusic */
+    isMusicPaused ? pauseMusic() : playMusic();
+});
