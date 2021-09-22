@@ -5,7 +5,9 @@ musicImg = wrapper.querySelector(".img-area img"),
 musicName = wrapper.querySelector(".song-details .name"),
 musicArtist = wrapper.querySelector(".song-details .artist"),
 mainAudio = wrapper.querySelector("#main-audio"),
-playPauseBtn = wrapper.querySelector(".play-pause");
+playPauseBtn = wrapper.querySelector(".play-pause"),
+prevBtn = wrapper.querySelector("#prev"),
+nextBtn = wrapper.querySelector("#next");
 
 let musicIndex = 1;
 
@@ -36,9 +38,22 @@ function pauseMusic() {
     mainAudio.pause();
 }
 
+/* Next music function */
+function nextMusic() {
+    /* Here we'll just increment of index by 1 */
+    musicIndex++;
+    loadMusic(musicIndex);
+    playMusic()
+}
+
 /* Play or music button event */
 playPauseBtn.addEventListener("click", () => {
     const isMusicPaused = wrapper.classList.contains("paused");
     /* If isMusicPaused is true them call pauseMusic else call playMusic */
     isMusicPaused ? pauseMusic() : playMusic();
+});
+
+/* Next music button event */
+nextBtn.addEventListener("click", () => {
+    nextMusic(); /* Callin' next music function */
 });
