@@ -22,6 +22,20 @@ function loadMusic(indexNumb) {
     mainAudio.src = `music/${allMusic[indexNumb - 1].src}`;
 }
 
+/* Play music function */
+function playMusic() {
+    wrapper.classList.add("paused");
+    playPauseBtn.querySelector("i").innerText = "pause";
+    mainAudio.play();
+}
+
+/* Pause music function */
+function pauseMusic() {
+    wrapper.classList.remove("paused");
+    playPauseBtn.querySelector("i").innerText = "play_arrow";
+    mainAudio.pause();
+}
+
 /* Play or music button event */
 playPauseBtn.addEventListener("click", () => {
     const isMusicPaused = wrapper.classList.contains("paused");
