@@ -7,7 +7,8 @@ musicArtist = wrapper.querySelector(".song-details .artist"),
 mainAudio = wrapper.querySelector("#main-audio"),
 playPauseBtn = wrapper.querySelector(".play-pause"),
 prevBtn = wrapper.querySelector("#prev"),
-nextBtn = wrapper.querySelector("#next");
+nextBtn = wrapper.querySelector("#next"),
+progressBar = wrapper.querySelector(".progress-bar");
 
 let musicIndex = 1;
 
@@ -74,3 +75,8 @@ nextBtn.addEventListener("click", () => {
 prevBtn.addEventListener("click", () => {
     prevMusic(); /* Callin' previous music function */
 })
+
+/* Update progress bar width according to music current time */
+mainAudio.addEventListener("timeupdate", (e) => {
+    console.log(e);
+});
