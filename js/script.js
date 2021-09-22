@@ -48,6 +48,16 @@ function nextMusic() {
     playMusic();
 }
 
+/* Previous music function */
+function prevMusic() {
+    /* Here we'll just decrement of index by -1 */
+    musicIndex--;
+    /* If musicIndex is less than 1 then musicIndex will be array length, so the last song will play */
+    musicIndex < 1 ? musicIndex = allMusic.length : musicIndex = musicIndex;
+    loadMusic(musicIndex);
+    playMusic();
+}
+
 /* Play or music button event */
 playPauseBtn.addEventListener("click", () => {
     const isMusicPaused = wrapper.classList.contains("paused");
@@ -59,3 +69,8 @@ playPauseBtn.addEventListener("click", () => {
 nextBtn.addEventListener("click", () => {
     nextMusic(); /* Callin' next music function */
 });
+
+/* Prev music button event */
+prevBtn.addEventListener("click", () => {
+    prevMusic(); /* Callin' previous music function */
+})
