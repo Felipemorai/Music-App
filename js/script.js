@@ -10,7 +10,7 @@ playPauseBtn = wrapper.querySelector(".play-pause");
 let musicIndex = 1;
 
 window.addEventListener("load", () => {
-/* Calling load music function once window loaded */
+    /* Calling load music function once window loaded */
     loadMusic(musicIndex);
 })
 
