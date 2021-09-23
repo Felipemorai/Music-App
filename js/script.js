@@ -74,9 +74,21 @@ nextBtn.addEventListener("click", () => {
 /* Prev music button event */
 prevBtn.addEventListener("click", () => {
     prevMusic(); /* Callin' previous music function */
-})
+});
 
 /* Update progress bar width according to music current time */
 mainAudio.addEventListener("timeupdate", (e) => {
-    console.log(e);
+    const currentTime = e.target.currentTime; /* Gettin' current time of song */
+    const duration = e.target.duration; /* Gettin' total duration of song */
+    let progressWidth = (currentTime / duration) * 100;
+    progressBar.style.width = `${progressWidth}%`;
+
+    mainAudio.addEventListener("loadeddata", () => {
+        let musicCurrentTime = wrapper.querySelector(".current"),
+        musicDuration = wrapper.querySelector(".duration");
+
+        /* Update song total duration */
+        let audioDuration = mainAudio.duration;
+        musicDuration.innerText = audioDuration;
+    });
 });
