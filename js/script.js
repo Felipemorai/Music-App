@@ -96,6 +96,7 @@ mainAudio.addEventListener("timeupdate", (e) => {
         }
         musicDuration.innerText = `${totalMin}:${totalSec}`; 
     });
+
      /* Update playing song current time */
      let currentMin = Math.floor(currentTime / 60);
      let currentSec = Math.floor(currentTime % 60);
@@ -103,4 +104,13 @@ mainAudio.addEventListener("timeupdate", (e) => {
          currentSec = `0${currentSec}`;
      }
      musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
+});
+
+/* Let's update playing song current time according to the progress bar width */
+progressBar.addEventListener("click", (e) => {
+    let progressWidthval = progressBar.clientWidth; /* Getting width of progress bar */
+    let clickedOffSetX = e.offsetX; /* Getting offset x value */
+    let songDuration = mainAudio.duration; /* Getting song total duration */
+
+    mainAudio.currentTime = (clickedOffSetX / progressWidthval) * songDuration;
 });
