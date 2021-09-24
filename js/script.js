@@ -124,7 +124,17 @@ repeatBtn.addEventListener("click", () => {
     let getText = repeatBtn.innerText; /* Getting innerText of icon */
     /* this function do different changes on different icon click using switch */
     switch(getText) {
-        case "repeat": /* If this icon is repeating */
+        case "repeat": /* If this icon is repeat then change it to repeat_one */
         repeatBtn.innerText = "repeat_one";
+        repeatBtn.setAttribute("title", "Song looped");
+        break;
+        case "repeat_one": /* If this icon is repeat_one then change it to shuffle*/
+        repeatBtn.innerText = "shuffle";
+        repeatBtn.setAttribute("title", "Playback shuffle");
+        break;
+        case "shuffle": /* If this icon is shuffle then change it to repeat */
+        repeatBtn.innerText = "repeat";
+        repeatBtn.setAttribute("title", "Playlist looped");
+        break;
     }
 });
