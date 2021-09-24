@@ -1,4 +1,4 @@
-/* Let's select all required tags or elements */
+/* select all required tags or elements */
 
 const wrapper = document.querySelector(".wrapper"),
 musicImg = wrapper.querySelector(".img-area img"),
@@ -8,6 +8,7 @@ mainAudio = wrapper.querySelector("#main-audio"),
 playPauseBtn = wrapper.querySelector(".play-pause"),
 prevBtn = wrapper.querySelector("#prev"),
 nextBtn = wrapper.querySelector("#next"),
+progressArea = wrapper.querySelector(".progress-area"),
 progressBar = wrapper.querySelector(".progress-bar");
 
 let musicIndex = 1;
@@ -41,7 +42,7 @@ function pauseMusic() {
 
 /* Next music function */
 function nextMusic() {
-    /* Here we'll just increment of index by 1 */
+    /* Here will just increment of index by 1 */
     musicIndex++;
     /* If musicIndex is greater than array length then musicIndex will be 1, so the first song will play*/
     musicIndex > allMusic.length ? musicIndex = 1 : musicIndex = musicIndex;
@@ -51,7 +52,7 @@ function nextMusic() {
 
 /* Previous music function */
 function prevMusic() {
-    /* Here we'll just decrement of index by -1 */
+    /* Here will just decrement of index by -1 */
     musicIndex--;
     /* If musicIndex is less than 1 then musicIndex will be array length, so the last song will play */
     musicIndex < 1 ? musicIndex = allMusic.length : musicIndex = musicIndex;
@@ -106,11 +107,24 @@ mainAudio.addEventListener("timeupdate", (e) => {
      musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
 });
 
-/* Let's update playing song current time according to the progress bar width */
-progressBar.addEventListener("click", (e) => {
-    let progressWidthval = progressBar.clientWidth; /* Getting width of progress bar */
+/* This update playing song current time according to the progress bar width */
+progressArea.addEventListener("click", (e) => {
+    let progressWidthval = progressArea.clientWidth; /* Getting width of progress bar */
     let clickedOffSetX = e.offsetX; /* Getting offset x value */
     let songDuration = mainAudio.duration; /* Getting song total duration */
 
     mainAudio.currentTime = (clickedOffSetX / progressWidthval) * songDuration;
+    playMusic();
+});
+
+/* it work on repeat, shuffle song according to the icon */
+const repeatBtn = wrapper.querySelector("#repeat-plist");
+repeatBtn.addEventListener("click", () => {
+    /* First getting the innerText of the icon then will change accordingly */
+    let getText = repeatBtn.innerText; /* Getting innerText of icon */
+    /* this function do different changes on different icon click using switch */
+    switch(getText) {
+        case "repeat": /* If this icon is repeating */
+        repeatBtn.innerText = "repeat_one";
+    }
 });
