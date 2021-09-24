@@ -135,6 +135,6 @@ repeatBtn.addEventListener("click", () => {
         case "shuffle": /* If this icon is shuffle then change it to repeat */
         repeatBtn.innerText = "repeat";
         repeatBtn.setAttribute("title", "Playlist looped");
-        break;
+        break; 
     }
 });
