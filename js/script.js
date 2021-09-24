@@ -138,3 +138,24 @@ repeatBtn.addEventListener("click", () => {
         break; 
     }
 });
+
+/* After the song ended */
+mainAudio.addEventListener("ended", () => {
+    let getText = repeatBtn.innerText; /* Getting innerText of icon */
+    switch(getText) {
+        case "repeat": /* If this icon is repeat then simply will call the nextMusic function so the next song will play */
+            nextMusic();
+            break;
+        case "repeat_one": /* If icon is repeat_one then will change the current playing song current time to 0 */
+            mainAudio.currentTime = 0;
+            loadMusic(indexNumb);
+            break;
+        case "shuffle":
+            /* Generating random index between the max range of array length */
+            let randIndex = Math.floor((math.random() * allMusic.length) + 1);
+            do {
+
+            }
+            break;
+    }
+});
