@@ -148,14 +148,19 @@ mainAudio.addEventListener("ended", () => {
             break;
         case "repeat_one": /* If icon is repeat_one then will change the current playing song current time to 0 */
             mainAudio.currentTime = 0;
-            loadMusic(indexNumb);
+            loadMusic(musicIndex);
+            playMusic();
             break;
         case "shuffle":
             /* Generating random index between the max range of array length */
-            let randIndex = Math.floor((math.random() * allMusic.length) + 1);
+            let randIndex = Math.floor((Math.random() * allMusic.length) + 1);
             do {
-
-            }
+                randIndex = Math.floor((Math.random() * allMusic.length) + 1);
+            } 
+            while(musicIndex == randIndex); /* This loop run 'til the next random number won't be the same of current music index */
+            musicIndex = randIndex; /* Passing randomIndex to musicIndex so the random song will play*/
+            loadMusic(musicIndex); 
+            playMusic(); 
             break;
     }
 });
