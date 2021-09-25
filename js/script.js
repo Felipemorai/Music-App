@@ -181,5 +181,17 @@ const ulTag = wrapper.querySelector("ul");
 /* Creating li according to the array length */
 for (let i = 0; i < allMusic.length; i++) {
     /* Passing the song name, artist from the array to li */
-    let liTag = ``;
+    let liTag = `
+    <li>
+    <div class="row">
+    <span>${allMusic[i].name}</span>
+    <p>${allMusic[i].artist}</p>
+    </div>
+    <audio src="music/${allMusic[i].src}"></audio>
+    <span id="${allMusic[i].src}" class="audio-duration">3:47</span>
+    </li>`;
+    ulTag.insertAdjacentHTML("beforeend", liTag);
+
+    let liAudioTag = ulTag.querySelector(`#${allMusic[i].src}`);
+    let liAudioTagDuration = ulTag.querySelector(`#${allMusic[i].src}`);
 }
