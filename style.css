@@ -104,7 +104,7 @@ body {
 
 .progress-area .progress-bar {
     height: inherit;
-    width: 50%;
+    width: 0%;
     position: relative;
     border-radius: inherit;
     background-image: linear-gradient(90deg, #ff7096 0%, #fbb1bd 100%);

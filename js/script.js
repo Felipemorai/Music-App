@@ -9,7 +9,10 @@ playPauseBtn = wrapper.querySelector(".play-pause"),
 prevBtn = wrapper.querySelector("#prev"),
 nextBtn = wrapper.querySelector("#next"),
 progressArea = wrapper.querySelector(".progress-area"),
-progressBar = wrapper.querySelector(".progress-bar");
+progressBar = wrapper.querySelector(".progress-bar"),
+musicList = wrapper.querySelector(".music-list"),
+showMoreBtn = wrapper.querySelector("#more-music"),
+hideMusicBtn = musicList.querySelector("#close");
 
 let musicIndex = 1;
 
@@ -164,3 +167,19 @@ mainAudio.addEventListener("ended", () => {
             break;
     }
 });
+
+showMoreBtn.addEventListener("click", () => {
+    musicList.classList.toggle("show");
+});
+
+hideMusicBtn.addEventListener("click", () => {
+    showMoreBtn.click();
+});
+
+const ulTag = wrapper.querySelector("ul");
+
+/* Creating li according to the array length */
+for (let i = 0; i < allMusic.length; i++) {
+    /* Passing the song name, artist from the array to li */
+    let liTag = ``;
+}
