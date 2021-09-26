@@ -179,14 +179,63 @@ hideMusicBtn.addEventListener("click", () => {
 const ulTag = wrapper.querySelector("ul");
 
 /* Creating li according to the array length */
-for (let i = 0; i < allMusic.length; i++) {
+for (let i = 0 ; i < allMusic.length; i++) {
+    let index = i + 1;
     /* Will pass the song name, artist from the array to li*/
     let liTag = `<li>
                   <div class="row">
-                    <span>Doja Cat - Streets</span>
-                    <p>Doja Cat</p>
+                    <span>${allMusic[0].name}</span>
+                    <p>${allMusic[0].artist}</p>
                   </div>
+                  <audio id="${allMusic[0].artist}" src="music/${allMusic[0].src}"></audio>
                   <span class="audio-duration">3:40<span>
-                 </li>`;
+                 </li>
+                 <li> 
+                  <div class="row">
+                    <span>${allMusic[1].name}</span>
+                    <p>${allMusic[1].artist}</p>
+                  </div>
+                  <audio id="${allMusic[1].artist}" src="music/${allMusic[1].src}"></audio>
+                  <span class="audio-duration">2:59<span>
+                 </li>
+                 <li>
+                  <div class="row">
+                    <span>${allMusic[2].name}</span>
+                    <p>${allMusic[2].artist}</p>
+                  </div>
+                  <audio id="${allMusic[2].artist}" src="music/${allMusic[2].src}"></audio>
+                  <span class="audio-duration">3:23<span>
+                 </li>
+                 <li>
+                  <div class="row">
+                    <span>${allMusic[3].name}</span>
+                    <p>${allMusic[3].artist}</p>
+                  </div>
+                  <audio id="${allMusic[3].artist}" src="music/${allMusic[3].src}"></audio>
+                  <span class="audio-duration">1:32<span>
+                 </li>
+                 <li>
+                  <div class="row">
+                    <span>${allMusic[4].name}</span>
+                    <p>${allMusic[4].artist}</p>
+                  </div>
+                  <audio id="${allMusic[4].artist}" src="music/${allMusic[4].src}"></audio>
+                  <span class="audio-duration">3:01<span>
+                 </li>
+                 `;
     ulTag.insertAdjacentHTML("beforeend", liTag);
+
+  let liAudioDuration = ulTag.querySelector(`#${allMusic[i].src}`);
+  let liAudioTag = ulTag.querySelector(`.${allMusic[i].src}`)
+
+  liAudioTag.addEventListener('loadeddata', () => {
+    // update audio song duration
+    let audioDuration = liAudioTag.duration
+    let totalMin = Math.floor(audioDuration / 60);
+    let totalSec = Math.floor(audioDuration % 60);
+    if (totalSec < 10) {
+      totalSec = `0${totalSec}`;
+    }
+    liAudioDuration.innerHTML = `${totalMin}:${totalSec}`;
+  })
 }
