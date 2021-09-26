@@ -180,7 +180,6 @@ const ulTag = wrapper.querySelector("ul");
 
 /* Creating li according to the array length */
 for (let i = 0 ; i < allMusic.length; i++) {
-    let index = i + 1;
     /* Will pass the song name, artist from the array to li*/
     let liTag = `<li>
                   <div class="row">
@@ -221,12 +220,12 @@ for (let i = 0 ; i < allMusic.length; i++) {
                   </div>
                   <audio id="${allMusic[4].artist}" src="music/${allMusic[4].src}"></audio>
                   <span class="audio-duration">3:01<span>
-                 </li>
+                 </li> 
                  `;
     ulTag.insertAdjacentHTML("beforeend", liTag);
 
   let liAudioDuration = ulTag.querySelector(`#${allMusic[i].src}`);
-  let liAudioTag = ulTag.querySelector(`.${allMusic[i].src}`)
+  let liAudioTag = ulTag.querySelector(`.${allMusic[i].src}`);
 
   liAudioTag.addEventListener('loadeddata', () => {
     // update audio song duration
@@ -237,5 +236,11 @@ for (let i = 0 ; i < allMusic.length; i++) {
       totalSec = `0${totalSec}`;
     }
     liAudioDuration.innerHTML = `${totalMin}:${totalSec}`;
+    liAudioDuration.setAttribute("t-duration", `${totalMin}:${totalSec}`);
   })
+}
+
+const allLiTags = ulTag.querySelectorAll("li");
+for (let j = 0; j < allLiTags.length; j++) {
+    allLiTags[j].setAttribute("onclick", "clicked(this)");
 }
