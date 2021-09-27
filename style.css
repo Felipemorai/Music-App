@@ -273,3 +273,8 @@ ul li .row p {
 ul li .audio-duration {
     font-size: 16px;
 }
+
+ul li .playing {
+    color: var(--violet);
+    pointer-events: none;
+}
