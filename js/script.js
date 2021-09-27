@@ -19,6 +19,7 @@ let musicIndex = 1;
 window.addEventListener("load", () => {
     /* Calling load music function once window loaded */
     loadMusic(musicIndex);
+    playingNow();
 })
 
 /* Load music function */
@@ -186,40 +187,40 @@ for (let i = 0 ; i < allMusic.length; i++) {
                     <span>${allMusic[0].name}</span>
                     <p>${allMusic[0].artist}</p>
                   </div>
-                  <audio id="${allMusic[0].artist}" src="music/${allMusic[0].src}"></audio>
-                  <span class="audio-duration">3:40<span>
+                  <audio class="${allMusic[0].src}" src="music/${allMusic[0].src}"></audio>
+                  <span id="${allMusic[0].src}" class="audio-duration">3:40<span>
                  </li>
                  <li li-index="${1}"> 
                   <div class="row">
                     <span>${allMusic[1].name}</span>
                     <p>${allMusic[1].artist}</p>
                   </div>
-                  <audio id="${allMusic[1].artist}" src="music/${allMusic[1].src}"></audio>
-                  <span class="audio-duration">2:59<span>
+                  <audio class="${allMusic[1].src}" src="music/${allMusic[1].src}"></audio>
+                  <span id="${allMusic[0].src}" class="audio-duration">2:59<span>
                  </li>
                  <li li-index="${2}">
                   <div class="row">
                     <span>${allMusic[2].name}</span>
                     <p>${allMusic[2].artist}</p>
                   </div>
-                  <audio id="${allMusic[2].artist}" src="music/${allMusic[2].src}"></audio>
-                  <span class="audio-duration">3:23<span>
+                  <audio class="${allMusic[2].src}" src="music/${allMusic[2].src}"></audio>
+                  <span id="${allMusic[0].src}" class="audio-duration">3:23<span>
                  </li>
                  <li li-index="${3}">
                   <div class="row">
                     <span>${allMusic[3].name}</span>
                     <p>${allMusic[3].artist}</p>
                   </div>
-                  <audio id="${allMusic[3].artist}" src="music/${allMusic[3].src}"></audio>
-                  <span class="audio-duration">1:32<span>
+                  <audio class="${allMusic[3].src}" src="music/${allMusic[3].src}"></audio>
+                  <span id="${allMusic[0].src}" class="audio-duration">1:32<span>
                  </li>
                  <li li-index="${4}">
                   <div class="row">
                     <span>${allMusic[4].name}</span>
                     <p>${allMusic[4].artist}</p>
                   </div>
-                  <audio id="${allMusic[4].artist}" src="music/${allMusic[4].src}"></audio>
-                  <span class="audio-duration">3:01<span>
+                  <audio class="${allMusic[4].src}" src="music/${allMusic[4].src}"></audio>
+                  <span id="${allMusic[0].src}" class="audio-duration">3:01<span>
                  </li> 
                  `;
     ulTag.insertAdjacentHTML("beforeend", liTag);
@@ -237,17 +238,18 @@ for (let i = 0 ; i < allMusic.length; i++) {
     }
     liAudioDuration.innerHTML = `${totalMin}:${totalSec}`;
     liAudioDuration.setAttribute("t-duration", `${totalMin}:${totalSec}`);
-  })
+  });
 }
 
 const allLiTags = ulTag.querySelectorAll("li");
-for (let j = 0; j < allLiTags.length; j++) {
+function playingNow () {
+    for (let j = 0; j < allLiTags.length; j++) {
+        if(allLiTags[j].getAttribute("li-index") == musicIndex) {
+            allLiTags[j].classList.add("playing");
+        }
 
-    if(allLiTags[j].getAttribute("li-index") == musicIndex) {
-        allLiTags[j].classList.add("playing");
+        allLiTags[j].setAttribute("onclick", "clicked(this)");
     }
-
-    allLiTags[j].setAttribute("onclick", "clicked(this)");
 }
 
 function clicked(element) {
@@ -255,4 +257,5 @@ function clicked(element) {
     musicIndex = getLiIndex;
     loadMusic(musicIndex);
     playMusic();
+    playingNow();
 }
