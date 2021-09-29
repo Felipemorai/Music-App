@@ -17,7 +17,6 @@ hideMusicBtn = musicList.querySelector("#close");
 let musicIndex = 1;
 
 window.addEventListener("load", () => {
-    /* Calling load music function once window loaded */
     loadMusic(musicIndex);
     playingNow();
 })
@@ -46,9 +45,7 @@ function pauseMusic() {
 
 /* Next music function */
 function nextMusic() {
-    /* Here will just increment of index by 1 */
     musicIndex++;
-    /* If musicIndex is greater than array length then musicIndex will be 1, so the first song will play*/
     musicIndex > allMusic.length ? musicIndex = 1 : musicIndex = musicIndex;
     loadMusic(musicIndex);
     playMusic();
@@ -56,9 +53,7 @@ function nextMusic() {
 
 /* Previous music function */
 function prevMusic() {
-    /* Here will just decrement of index by -1 */
     musicIndex--;
-    /* If musicIndex is less than 1 then musicIndex will be array length, so the last song will play */
     musicIndex < 1 ? musicIndex = allMusic.length : musicIndex = musicIndex;
     loadMusic(musicIndex);
     playMusic();
@@ -68,25 +63,24 @@ function prevMusic() {
 /* Play or music button event */
 playPauseBtn.addEventListener("click", () => {
     const isMusicPaused = wrapper.classList.contains("paused");
-    /* If isMusicPaused is true them call pauseMusic else call playMusic */
     isMusicPaused ? pauseMusic() : playMusic();
     playingNow();
 });
 
 /* Next music button event */
 nextBtn.addEventListener("click", () => {
-    nextMusic(); /* Callin' next music function */
+    nextMusic(); 
 });
 
 /* Prev music button event */
 prevBtn.addEventListener("click", () => {
-    prevMusic(); /* Callin' previous music function */
+    prevMusic(); 
 });
 
 /* Update progress bar width according to music current time */
 mainAudio.addEventListener("timeupdate", (e) => {
-    const currentTime = e.target.currentTime; /* Gettin' current time of song */
-    const duration = e.target.duration; /* Gettin' total duration of song */
+    const currentTime = e.target.currentTime; 
+    const duration = e.target.duration; 
     let progressWidth = (currentTime / duration) * 100;
     progressBar.style.width = `${progressWidth}%`;
 
@@ -98,7 +92,7 @@ mainAudio.addEventListener("timeupdate", (e) => {
         let audioDuration = mainAudio.duration;
         let totalMin = Math.floor(audioDuration / 60);
         let totalSec = Math.floor(audioDuration % 60);
-        if(totalSec < 10) { /* Adding 0 if sec is less than 10 */
+        if(totalSec < 10) { 
             totalSec = `0${totalSec}`;
         }
         musicDuration.innerText = `${totalMin}:${totalSec}`; 
@@ -115,9 +109,9 @@ mainAudio.addEventListener("timeupdate", (e) => {
 
 /* This update playing song current time according to the progress bar width */
 progressArea.addEventListener("click", (e) => {
-    let progressWidthval = progressArea.clientWidth; /* Getting width of progress bar */
-    let clickedOffSetX = e.offsetX; /* Getting offset x value */
-    let songDuration = mainAudio.duration; /* Getting song total duration */
+    let progressWidthval = progressArea.clientWidth; 
+    let clickedOffSetX = e.offsetX; 
+    let songDuration = mainAudio.duration; 
 
     mainAudio.currentTime = (clickedOffSetX / progressWidthval) * songDuration;
     playMusic();
@@ -126,19 +120,17 @@ progressArea.addEventListener("click", (e) => {
 /* it work on repeat, shuffle song according to the icon */
 const repeatBtn = wrapper.querySelector("#repeat-plist");
 repeatBtn.addEventListener("click", () => {
-    /* First getting the innerText of the icon then will change accordingly */
-    let getText = repeatBtn.innerText; /* Getting innerText of icon */
-    /* this function do different changes on different icon click using switch */
+    let getText = repeatBtn.innerText; 
     switch(getText) {
-        case "repeat": /* If this icon is repeat then change it to repeat_one */
+        case "repeat": 
         repeatBtn.innerText = "repeat_one";
         repeatBtn.setAttribute("title", "Song looped");
         break;
-        case "repeat_one": /* If this icon is repeat_one then change it to shuffle*/
+        case "repeat_one": 
         repeatBtn.innerText = "shuffle";
         repeatBtn.setAttribute("title", "Playback shuffle");
         break;
-        case "shuffle": /* If this icon is shuffle then change it to repeat */
+        case "shuffle": 
         repeatBtn.innerText = "repeat";
         repeatBtn.setAttribute("title", "Playlist looped");
         break; 
@@ -147,24 +139,24 @@ repeatBtn.addEventListener("click", () => {
 
 /* After the song ended */
 mainAudio.addEventListener("ended", () => {
-    let getText = repeatBtn.innerText; /* Getting innerText of icon */
+    let getText = repeatBtn.innerText; 
     switch(getText) {
-        case "repeat": /* If this icon is repeat then simply will call the nextMusic function so the next song will play */
+        case "repeat": 
             nextMusic();
             break;
-        case "repeat_one": /* If icon is repeat_one then will change the current playing song current time to 0 */
+        case "repeat_one": 
             mainAudio.currentTime = 0;
             loadMusic(musicIndex);
             playMusic();
             break;
         case "shuffle":
-            /* Generating random index between the max range of array length */
+            
             let randIndex = Math.floor((Math.random() * allMusic.length) + 1);
             do {
                 randIndex = Math.floor((Math.random() * allMusic.length) + 1);
             } 
-            while(musicIndex == randIndex); /* This loop run 'til the next random number won't be the same of current music index */
-            musicIndex = randIndex; /* Passing randomIndex to musicIndex so the random song will play*/
+            while(musicIndex == randIndex); 
+            musicIndex = randIndex; 
             loadMusic(musicIndex); 
             playMusic(); 
             playingNow();
@@ -184,7 +176,6 @@ const ulTag = wrapper.querySelector("ul");
 
 /* Creating li according to the array length */
 for (let i = 0 ; i < allMusic.length; i++) {
-    /* Will pass the song name, artist from the array to li*/
     let liTag = `<li li-index="${0}">
                   <div class="row">
                     <span>${allMusic[0].name}</span>
