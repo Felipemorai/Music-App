@@ -1,4 +1,4 @@
-<h1 align="center"> Music-App </h1>
+<h1 align="center"> Music App </h1>
 <p align="center">🎼 This is a awesome music player, for the user to create your favorite playlist. 🎙️ </p>
 
 
